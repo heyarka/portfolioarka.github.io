@@ -1250,3 +1250,7 @@ img {
     max-width: 200px;
   }
 }
+
+.blue-text {
+  color: #3498db;
+}
