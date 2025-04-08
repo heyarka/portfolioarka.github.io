@@ -1,26 +1,346 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>arka-dynamic-showcase-flow</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="arka-dynamic-showcase-flow" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>Arka Biswas | Data Analyst Portfolio</title>
+    <meta name="description" content="Arka Biswas - Data Analyst Portfolio" />
+    <meta name="author" content="Arka Biswas" />
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- AOS Library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
   </head>
 
   <body>
-    <div id="root"></div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <a href="#" class="logo-link">ARKA<span>BISWAS</span></a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header id="home" class="hero">
+      <div class="hero-content">
+        <h1 data-aos="fade-up" data-aos-duration="1000">ARKA BISWAS</h1>
+        <h2 data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">Data Analyst</h2>
+        <p data-aos="fade-up" data-aos-duration="1400" data-aos-delay="600">Transforming complex data into clear, actionable insights</p>
+        <div class="hero-buttons" data-aos="fade-up" data-aos-duration="1600" data-aos-delay="900">
+          <a href="#portfolio" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="data-visual" id="hero-chart"></div>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>About Me</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="about-content">
+          <div class="about-text" data-aos="fade-right">
+            <h3>Hello, I'm Arka</h3>
+            <p>I am a passionate Data Analyst with expertise in transforming raw data into meaningful business insights. With a strong background in statistical analysis, data visualization, and predictive modeling, I help organizations make data-driven decisions.</p>
+            <p>My approach combines technical expertise with clear communication, ensuring that complex data findings are accessible to all stakeholders.</p>
+            <div class="about-buttons">
+              <a href="#" class="btn btn-secondary download-btn">
+                <i class="fas fa-download"></i> Download Resume
+              </a>
+            </div>
+          </div>
+          <div class="about-visual" data-aos="fade-left">
+            <div class="about-card">
+              <div class="experience-item">
+                <div class="exp-number">3+</div>
+                <div class="exp-text">Years<br>Experience</div>
+              </div>
+              <div class="experience-item">
+                <div class="exp-number">50+</div>
+                <div class="exp-text">Projects<br>Completed</div>
+              </div>
+              <div class="experience-item">
+                <div class="exp-number">20+</div>
+                <div class="exp-text">Happy<br>Clients</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>My Skills</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="skills-content">
+          <div class="skills-text" data-aos="fade-right">
+            <h3>Technical Proficiencies</h3>
+            <p>I specialize in analyzing and visualizing data to uncover insights that drive business decisions. My expertise spans across various tools and methodologies in the data analytics field.</p>
+          </div>
+          
+          <div class="skills-wrapper">
+            <div class="skills-category" data-aos="fade-up" data-aos-delay="200">
+              <h4>Data Analysis</h4>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <h5>Excel</h5>
+                    <div class="skill-percent">95%</div>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" style="width: 95%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <h5>SQL</h5>
+                    <div class="skill-percent">90%</div>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" style="width: 90%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <h5>Python</h5>
+                    <div class="skill-percent">85%</div>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" style="width: 85%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skills-category" data-aos="fade-up" data-aos-delay="400">
+              <h4>Data Visualization</h4>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <h5>Tableau</h5>
+                    <div class="skill-percent">92%</div>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" style="width: 92%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <h5>Power BI</h5>
+                    <div class="skill-percent">88%</div>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" style="width: 88%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <h5>Advanced Excel Charts</h5>
+                    <div class="skill-percent">95%</div>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" style="width: 95%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>My Portfolio</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="portfolio-filter" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="excel">Excel</button>
+          <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+          <button class="filter-btn" data-filter="visualization">Visualizations</button>
+          <button class="filter-btn" data-filter="analysis">Analysis</button>
+        </div>
+        <div class="portfolio-grid" id="portfolio-grid">
+          <!-- Portfolio items will be populated via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Showcase Section -->
+    <section class="section data-showcase">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Data Showcase</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="charts-container">
+          <div class="chart-item" data-aos="fade-up">
+            <h3>Revenue Growth Analysis</h3>
+            <div class="chart-wrapper">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-item" data-aos="fade-up" data-aos-delay="200">
+            <h3>Market Segment Distribution</h3>
+            <div class="chart-wrapper">
+              <canvas id="segmentChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-item" data-aos="fade-up" data-aos-delay="400">
+            <h3>Performance Metrics</h3>
+            <div class="chart-wrapper">
+              <canvas id="metricsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Contact Me</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info" data-aos="fade-right">
+            <h3>Get In Touch</h3>
+            <p>Feel free to reach out for collaboration opportunities or if you have any questions about my work.</p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>arka.biswas@example.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>New York, USA</span>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="contact-form-container" data-aos="fade-left">
+            <form id="contact-form" class="contact-form">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group">
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            <div id="form-message" class="form-message"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h3>ARKA<span>BISWAS</span></h3>
+            <p>Data Analyst</p>
+          </div>
+          <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 Arka Biswas. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Project Data -->
+    <script src="project-data.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="main.js"></script>
+    
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
