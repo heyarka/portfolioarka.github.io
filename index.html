@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,6 +49,7 @@
 
     <!-- Header / Hero Section -->
     <header id="home" class="hero">
+      <div class="hero-particles" id="particles-js"></div>
       <div class="hero-content">
         <h1 data-aos="fade-up" data-aos-duration="1000">ARKA BISWAS</h1>
         <h2 data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">Data Analyst</h2>
@@ -62,7 +62,46 @@
       <div class="hero-visual">
         <div class="data-visual" id="hero-chart"></div>
       </div>
+      <div class="scroll-down">
+        <a href="#about"><i class="fas fa-chevron-down"></i></a>
+      </div>
     </header>
+
+    <!-- Stats Counter Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-container">
+          <div class="stat-item" data-aos="fade-up">
+            <div class="stat-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="stat-number" data-count="50">0</div>
+            <div class="stat-text">Projects Completed</div>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="stat-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="stat-number" data-count="3">0</div>
+            <div class="stat-text">Years Experience</div>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <div class="stat-number" data-count="85">0</div>
+            <div class="stat-text">Data Visualizations</div>
+          </div>
+          <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="stat-icon">
+              <i class="fas fa-smile"></i>
+            </div>
+            <div class="stat-number" data-count="20">0</div>
+            <div class="stat-text">Happy Clients</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="section about-section">
@@ -186,6 +225,60 @@
       </div>
     </section>
 
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>My Services</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="services-container">
+          <div class="service-item" data-aos="fade-up">
+            <div class="service-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Data Analysis</h3>
+            <p>Expert analysis of complex datasets to extract meaningful insights and support decision-making.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <h3>Data Visualization</h3>
+            <p>Transforming raw data into compelling visual stories that highlight key trends and patterns.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon">
+              <i class="fas fa-file-excel"></i>
+            </div>
+            <h3>Excel Dashboards</h3>
+            <p>Custom Excel dashboards that provide real-time insights and interactive data exploration.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>Database Management</h3>
+            <p>Efficient organization and optimization of databases to ensure data integrity and accessibility.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Predictive Analytics</h3>
+            <p>Using historical data and statistical algorithms to forecast future trends and outcomes.</p>
+          </div>
+          <div class="service-item" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>Data-Driven Solutions</h3>
+            <p>Custom solutions that leverage data analytics to solve specific business problems.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="section portfolio-section">
       <div class="container">
@@ -202,6 +295,31 @@
         </div>
         <div class="portfolio-grid" id="portfolio-grid">
           <!-- Portfolio items will be populated via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>Client Testimonials</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="testimonials-container" data-aos="fade-up">
+          <div class="testimonial-wrapper">
+            <div class="testimonials-track" id="testimonials-track">
+              <!-- Testimonials will be populated via JavaScript -->
+            </div>
+            <div class="testimonial-controls">
+              <button class="testimonial-btn prev" id="prev-testimonial">
+                <i class="fas fa-arrow-left"></i>
+              </button>
+              <button class="testimonial-btn next" id="next-testimonial">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -230,6 +348,53 @@
             <h3>Performance Metrics</h3>
             <div class="chart-wrapper">
               <canvas id="metricsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section process-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2>My Process</h2>
+          <div class="underline"></div>
+        </div>
+        <div class="process-container">
+          <div class="process-step" data-aos="fade-right">
+            <div class="process-number">01</div>
+            <div class="process-content">
+              <h3>Data Collection</h3>
+              <p>Gathering relevant data from multiple sources to ensure comprehensive analysis.</p>
+            </div>
+          </div>
+          <div class="process-step" data-aos="fade-left">
+            <div class="process-number">02</div>
+            <div class="process-content">
+              <h3>Data Cleaning</h3>
+              <p>Refining and preprocessing data to ensure accuracy and consistency.</p>
+            </div>
+          </div>
+          <div class="process-step" data-aos="fade-right">
+            <div class="process-number">03</div>
+            <div class="process-content">
+              <h3>Analysis</h3>
+              <p>Applying statistical methods and analytical techniques to extract insights.</p>
+            </div>
+          </div>
+          <div class="process-step" data-aos="fade-left">
+            <div class="process-number">04</div>
+            <div class="process-content">
+              <h3>Visualization</h3>
+              <p>Creating compelling visual representations of analytical findings.</p>
+            </div>
+          </div>
+          <div class="process-step" data-aos="fade-right">
+            <div class="process-number">05</div>
+            <div class="process-content">
+              <h3>Interpretation</h3>
+              <p>Translating data insights into practical business recommendations.</p>
             </div>
           </div>
         </div>
@@ -333,6 +498,9 @@
 
     <!-- AOS Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Particles.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     
     <!-- Project Data -->
     <script src="project-data.js"></script>
