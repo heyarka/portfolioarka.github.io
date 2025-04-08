@@ -1,4 +1,3 @@
-
 // Initialize AOS animation library
 AOS.init({
   duration: 1000,
@@ -22,6 +21,29 @@ const formMessage = document.getElementById('form-message');
 const testimonialTrack = document.getElementById('testimonials-track');
 const prevTestimonialBtn = document.getElementById('prev-testimonial');
 const nextTestimonialBtn = document.getElementById('next-testimonial');
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+// Check for saved theme preference or prefer-color-scheme
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+  document.body.classList.add('dark-mode');
+  if (darkModeToggle) darkModeToggle.checked = true;
+}
+
+// Theme Toggle Functionality
+if (darkModeToggle) {
+  darkModeToggle.addEventListener('change', function() {
+    if (this.checked) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('theme', 'light');
+    }
+  });
+}
 
 // Initialize Particles.js for hero section
 if (document.getElementById('particles-js')) {
@@ -549,13 +571,80 @@ function populateTestimonials() {
   updateTestimonialPosition();
 }
 
-// Testimonial slider
+// Testimonial slider - improved responsiveness
 let currentTestimonial = 0;
 const totalTestimonials = testimonialsData ? testimonialsData.length : 0;
 
 function updateTestimonialPosition() {
   if (!testimonialTrack) return;
+  
+  // Smooth transition for swiping
+  testimonialTrack.style.transition = 'transform 0.5s ease';
   testimonialTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+  
+  // Update indicator dots
+  const dots = document.querySelectorAll('.testimonial-dot');
+  if (dots.length > 0) {
+    dots.forEach((dot, index) => {
+      if (index === currentTestimonial) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+}
+
+// Add touch swipe functionality for testimonials
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (testimonialTrack) {
+  // Create indicator dots
+  const indicatorsDiv = document.createElement('div');
+  indicatorsDiv.className = 'testimonial-indicators';
+  
+  for (let i = 0; i < totalTestimonials; i++) {
+    const dot = document.createElement('div');
+    dot.className = i === 0 ? 'testimonial-dot active' : 'testimonial-dot';
+    dot.onclick = () => {
+      currentTestimonial = i;
+      updateTestimonialPosition();
+    };
+    indicatorsDiv.appendChild(dot);
+  }
+  
+  testimonialTrack.parentElement.parentElement.appendChild(indicatorsDiv);
+  
+  // Add touch events
+  testimonialTrack.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  testimonialTrack.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+}
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  
+  if (touchEndX < touchStartX - swipeThreshold) {
+    // Swipe left - next testimonial
+    if (currentTestimonial < totalTestimonials - 1) {
+      currentTestimonial++;
+      updateTestimonialPosition();
+    }
+  }
+  
+  if (touchEndX > touchStartX + swipeThreshold) {
+    // Swipe right - previous testimonial
+    if (currentTestimonial > 0) {
+      currentTestimonial--;
+      updateTestimonialPosition();
+    }
+  }
 }
 
 if (prevTestimonialBtn) {
@@ -573,12 +662,32 @@ if (nextTestimonialBtn) {
 }
 
 // Auto rotate testimonials
-setInterval(() => {
-  if (testimonialTrack) {
+let testimonialInterval = setInterval(() => {
+  if (testimonialTrack && document.visibilityState === 'visible') {
     currentTestimonial = (currentTestimonial < totalTestimonials - 1) ? currentTestimonial + 1 : 0;
     updateTestimonialPosition();
   }
 }, 8000);
+
+// Pause auto rotation when interacting
+if (testimonialTrack) {
+  testimonialTrack.addEventListener('mouseover', () => {
+    clearInterval(testimonialInterval);
+  });
+  
+  testimonialTrack.addEventListener('mouseleave', () => {
+    testimonialInterval = setInterval(() => {
+      if (document.visibilityState === 'visible') {
+        currentTestimonial = (currentTestimonial < totalTestimonials - 1) ? currentTestimonial + 1 : 0;
+        updateTestimonialPosition();
+      }
+    }, 8000);
+  });
+  
+  testimonialTrack.addEventListener('touchstart', () => {
+    clearInterval(testimonialInterval);
+  });
+}
 
 // Animate stats counter
 function animateCounters() {
@@ -632,6 +741,44 @@ function populatePortfolio() {
 
 // Initialize everything when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+  // Add the dark mode toggle to the body
+  if (!document.getElementById('dark-mode-toggle')) {
+    const toggleHTML = `
+      <div class="dark-mode-switch-container">
+        <input type="checkbox" class="dark-mode-switch" id="dark-mode-toggle">
+        <label for="dark-mode-toggle" class="dark-mode-label">
+          <div class="dark-mode-icons">
+            <i class="fas fa-sun icon-sun"></i>
+            <i class="fas fa-moon icon-moon"></i>
+          </div>
+        </label>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', toggleHTML);
+    
+    // Update the dark mode toggle reference
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    
+    // Check saved theme
+    if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+      document.body.classList.add('dark-mode');
+      if (darkModeToggle) darkModeToggle.checked = true;
+    }
+    
+    // Add event listener
+    if (darkModeToggle) {
+      darkModeToggle.addEventListener('change', function() {
+        if (this.checked) {
+          document.body.classList.add('dark-mode');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.body.classList.remove('dark-mode');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    }
+  }
+  
   populatePortfolio();
   populateTestimonials();
   initCharts();
